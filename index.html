@@ -1,57 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Porto Betarello - Refúgios de luxo da família Betarello em Florianópolis e interior de São Paulo. Casas e apartamentos de temporada para experiências inesquecíveis.">
-    <meta name="keywords"
-        content="aluguel de temporada, casas de luxo, Florianópolis, São Paulo, família Betarello, refúgios, férias">
-    <meta name="author" content="Família Betarello">
-    <meta property="og:title" content="Porto Betarello - Refúgios de Luxo">
-    <meta property="og:description"
-        content="Refúgios de luxo preparados pela família Betarello para você desacelerar, reconectar e viver o melhor da vida.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://portobetarello.com/images/og-image.jpg">
-    <title>Porto Betarello - Refúgios de Luxo | Aluguel de Temporada</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='28' fill='%23f5cc00'/%3E%3Cpath d='M5 68 Q50 58 95 68' stroke='%23000985' stroke-width='12' fill='none'/%3E%3C/svg%3E">
-
-
-
-
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-inner">
-
-                <!-- Logo -->
-                <a href="#home" class="logo">
-                    Porto Betarello
-                </a>
-
-                <!-- Desktop Navigation -->
+                <a href="#home" class="logo">Porto Betarello</a>
                 <nav class="nav-desktop">
-                    <a href="#home" class="nav-link">Início</a>
-                    <a href="#story" class="nav-link">Nossa História</a>
-                    <a href="#retreats" class="nav-link">Refúgios</a>
-                    <a href="#tips" class="nav-link">Explore Mais</a>
-                    <a href="#contact" class="nav-link">Contato</a>
+                    <a href="index.html" class="nav-link" data-pt="Início" data-en="Home">Início</a>
+                    <a href="sobre.html" class="nav-link" data-pt="Sobre" data-en="About">Sobre nós</a>
+                    <a href="#" class="nav-link" data-pt="Galeria" data-en="Gallery">Galeria</a>
+                    <a href="#" class="nav-link" data-pt="Dicas" data-en="Tips">Dicas</a>
+                    <a href="#" class="nav-link" data-pt="Contato" data-en="Contact">Contato</a>
                 </nav>
-
-                <!-- Right Side -->
                 <div class="header-actions">
-                    <a href="https://instagram.com/portobetarello" target="_blank" class="icon-btn">
+                    <a href="https://www.instagram.com/porto_betarello/" target="_blank" class="icon-btn">
                         <svg viewBox="0 0 24 24" width="16" height="16">
                             <path fill="currentColor"
                                 d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.8-.9a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z" />
@@ -62,65 +34,47 @@
                             <span class="country">BR</span>
                             <span class="lang">PT</span>
                         </button>
-
                         <button class="lang-option" data-lang="en">
                             <span class="country">GB</span>
                             <span class="lang">EN</span>
                         </button>
-
                         <span class="lang-slider"></span>
                     </div>
-
-                    <button class="menu-btn" id="menuToggle">
-                        ☰
-                    </button>
+                    <button class="menu-btn" id="menuToggle">☰</button>
                 </div>
-
             </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <nav class="mobile-nav">
-                <a href="#home">Início</a>
-                <a href="#story">Nossa História</a>
-                <a href="#retreats">Refúgios</a>
-                <a href="#tips">Explore Mais</a>
-                <a href="#contact">Contato</a>
-                <a href="https://instagram.com/portobetarello" target="_blank">Instagram</a>
-            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+            <a href="index.html" data-pt="Início" data-en="Home">Início</a>
+            <a href="sobre.html" data-pt="Sobre" data-en="About">Sobre nós</a>
+            <a href="#" data-pt="Galeria" data-en="Gallery">Galeria</a>
+            <a href="#" data-pt="Dicas" data-en="Tips">Dicas</a>
+            <a href="#" data-pt="Contato" data-en="Contact">Contato</a>
+        </nav>
+    </div>
+
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
             <span class="hero-line"></span>
-            <h1 class="hero-title" data-pt="Porto Betarello" data-en="Porto Betarello">Porto Betarello</h1>
+            <h1 class="hero-title">Porto Betarello</h1>
             <p class="hero-subtitle"
                 data-pt="Refúgios de luxo preparados pela família Betarello para você desacelerar, reconectar e viver o melhor da vida."
                 data-en="Luxury retreats crafted by the Betarello family for you to slow down, reconnect, and experience the best of life.">
                 Refúgios de luxo preparados pela família Betarello para você desacelerar, reconectar e viver o melhor da
-                vida.
-            </p>
+                vida.</p>
             <p class="hero-description"
-                data-pt="Viajar não é apenas mudar de lugar — é restaurar a mente, reduzir o estresse e criar memórias que duram para sempre. Nossos refúgios foram pensados para oferecer exatamente isso: paz, conforto e bem-estar em meio à natureza."
-                data-en="Traveling is not just changing places — it restores the mind, reduces stress, and creates memories that last forever. Our retreats were designed to offer exactly that: peace, comfort, and well-being amidst nature.">
-                Viajar não é apenas mudar de lugar — é restaurar a mente, reduzir o estresse e criar memórias que duram
-                para sempre. Nossos refúgios foram pensados para oferecer exatamente isso: paz, conforto e bem-estar em
-                meio à natureza.
-            </p>
-            <a href="#refugios" class="btn btn-primary"
-   data-pt="Descubra nossos refúgios"
-   data-en="Discover our retreats">
-  Descubra nossos refúgios
-</a>
-
+                data-pt="Viajar não é apenas mudar de lugar, é restaurar a mente, reduzir o estresse e criar memórias que duram para sempre."
+                data-en="Traveling is not just changing places, it restores the mind, reduces stress, and creates memories that last forever.">
+                Viajar não é apenas mudar de lugar, é restaurar a mente, reduzir o estresse e criar memórias que duram
+                para sempre.</p>
+            <a href="#galeria" class="btn btn-primary" data-pt="Descubra nossos refúgios"
+                data-en="Discover our retreats">Descubra nossos refúgios</a>
         </div>
     </section>
 
-    <!-- Mini Gallery Section -->
     <section id="galeria" class="gallery-section">
         <div class="container">
             <div class="section-header">
@@ -128,63 +82,41 @@
                 <h2 data-pt="Momentos Porto Betarello" data-en="Porto Betarello Moments">Momentos Porto Betarello</h2>
                 <span class="decorative-line"></span>
             </div>
-            <div class="gallery-carousel" id="galleryCarousel">
-                <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Imagem anterior">
+            <div class="gallery-carousel">
+                <button class="carousel-btn carousel-btn-prev" id="carouselPrev">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                 </button>
-                <div class="gallery-track">
+                <div class="gallery-track" id="galleryTrack">
                     <div class="gallery-item" data-index="0">
                         <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80"
-                            alt="Piscina infinita com vista para o mar ao pôr do sol" loading="lazy">
+                            alt="Piscina">
                         <p class="gallery-caption" data-pt="Pôr do sol na piscina" data-en="Sunset at the pool">Pôr do
                             sol na piscina</p>
                     </div>
                     <div class="gallery-item" data-index="1">
-                        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80"
-                            alt="Quarto luxuoso com vista para o mar" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80" alt="Quarto">
                         <p class="gallery-caption" data-pt="Conforto e vista deslumbrante"
                             data-en="Comfort and stunning views">Conforto e vista deslumbrante</p>
                     </div>
                     <div class="gallery-item" data-index="2">
-                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80"
-                            alt="Trilha na mata atlântica com raios de sol" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80" alt="Trilha">
                         <p class="gallery-caption" data-pt="Trilhas na natureza" data-en="Nature trails">Trilhas na
                             natureza</p>
                     </div>
                     <div class="gallery-item" data-index="3">
-                        <img src="https://images.unsplash.com/photo-1600335895229-6e75511892c8?w=800&q=80"
-                            alt="Jantar ao ar livre com vista para o pôr do sol" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1600335895229-6e75511892c8?w=800&q=80" alt="Jantar">
                         <p class="gallery-caption" data-pt="Jantares memoráveis" data-en="Memorable dinners">Jantares
                             memoráveis</p>
                     </div>
                     <div class="gallery-item" data-index="4">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
-                            alt="Praia paradisíaca em dia ensolarado" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Praia">
                         <p class="gallery-caption" data-pt="Praias exclusivas" data-en="Exclusive beaches">Praias
                             exclusivas</p>
                     </div>
-                    <div class="gallery-item" data-index="5">
-                        <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80"
-                            alt="Sala de estar elegante com lareira" loading="lazy">
-                        <p class="gallery-caption" data-pt="Ambientes sofisticados" data-en="Sophisticated spaces">
-                            Ambientes sofisticados</p>
-                    </div>
-                    <div class="gallery-item" data-index="6">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80"
-                            alt="Varanda com rede e vista para montanhas" loading="lazy">
-                        <p class="gallery-caption" data-pt="Momentos de relaxamento" data-en="Relaxation moments">
-                            Momentos de relaxamento</p>
-                    </div>
-                    <div class="gallery-item" data-index="7">
-                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80"
-                            alt="Vista aérea da costa com vegetação" loading="lazy">
-                        <p class="gallery-caption" data-pt="Grande Florianópolis" data-en="Greater Florianópolis">Grande
-                            Florianópolis</p>
-                    </div>
                 </div>
-                <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Próxima imagem">
+                <button class="carousel-btn carousel-btn-next" id="carouselNext">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
@@ -193,201 +125,162 @@
         </div>
     </section>
 
-    <!-- Dicas da Família Section -->
     <section id="dicas" class="dicas-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header column">
                 <span class="decorative-line"></span>
-                <h2 data-pt="Dicas da Família Betarello" data-en="Betarello Family Tips">Dicas da Família Betarello</h2>
-                <span class="decorative-line"></span>
+                <h2 data-pt="Dicas da Família" data-en="Family Tips">Dicas da Família</h2>
+                <p class="dicas-subtitle" data-pt="Descubra os lugares favoritos da família Betarello"
+                    data-en="Discover the Betarello family's favorite places">Descubra os lugares favoritos da família
+                    Betarello</p>
             </div>
-            <p class="dicas-intro"
-                data-pt="Compartilhamos com você os lugares e experiências que mais amamos. Conhecimento local autêntico que só quem vive aqui pode oferecer."
-                data-en="We share with you the places and experiences we love most. Authentic local knowledge that only those who live here can offer.">
-                Compartilhamos com você os lugares e experiências que mais amamos. Conhecimento local autêntico que só
-                quem vive aqui pode oferecer.
-            </p>
-            <div class="dicas-grid">
-                <article class="dica-card">
-                    <div class="dica-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
+            <div class="dicas-cards">
+                <article class="dica-card-img">
+                    <div class="dica-img">
+                        <span class="dica-badge">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="#0b1a8f">
+                                <path
+                                    d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" />
+                            </svg>
+                        </span>
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Praia">
                     </div>
-                    <h3 class="dica-title" data-pt="Trilha do Morro da Cruz" data-en="Morro da Cruz Trail">Trilha do
-                        Morro da Cruz</h3>
-                    <p class="dica-description"
-                        data-pt="Nascer do sol inesquecível com vista 360° de Florianópolis. Trilha moderada de 40 minutos. Leve água e vá cedo!"
-                        data-en="Unforgettable sunrise with 360° views of Florianópolis. Moderate 40-minute trail. Bring water and go early!">
-                        Nascer do sol inesquecível com vista 360° de Florianópolis. Trilha moderada de 40 minutos. Leve
-                        água e vá cedo!
-                    </p>
+                    <h3 data-pt="Praia Secreta da Lagoinha" data-en="Secret Lagoinha Beach">Praia Secreta da Lagoinha
+                    </h3>
+                    <p data-pt="Uma joia escondida com águas cristalinas e pouca movimentação"
+                        data-en="A hidden gem with crystal clear waters and low traffic">Uma joia escondida com águas
+                        cristalinas e pouca movimentação</p>
                 </article>
-                <article class="dica-card">
-                    <div class="dica-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-                            <line x1="7" y1="7" x2="7.01" y2="7" />
-                        </svg>
+                <article class="dica-card-img">
+                    <div class="dica-img">
+                        <span class="dica-badge">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="#0b1a8f">
+                                <path
+                                    d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" />
+                            </svg>
+                        </span>
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80"
+                            alt="Restaurante">
                     </div>
-                    <h3 class="dica-title" data-pt="Praia Secreta dos Naufragados" data-en="Secret Naufragados Beach">
-                        Praia Secreta dos Naufragados</h3>
-                    <p class="dica-description"
-                        data-pt="Acessível apenas por trilha ou barco. Águas cristalinas e quase nenhum turista. O paraíso escondido da ilha."
-                        data-en="Accessible only by trail or boat. Crystal clear waters and almost no tourists. The island's hidden paradise.">
-                        Acessível apenas por trilha ou barco. Águas cristalinas e quase nenhum turista. O paraíso
-                        escondido da ilha.
-                    </p>
+                    <h3 data-pt="Restaurante Ostradamus" data-en="Ostradamus Restaurant">Restaurante Ostradamus</h3>
+                    <p data-pt="Frutos do mar frescos com vista panorâmica inesquecível"
+                        data-en="Fresh seafood with unforgettable panoramic views">Frutos do mar frescos com vista
+                        panorâmica inesquecível</p>
                 </article>
-                <article class="dica-card">
-                    <div class="dica-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                            <polyline points="9 22 9 12 15 12 15 22" />
-                        </svg>
+                <article class="dica-card-img">
+                    <div class="dica-img">
+                        <span class="dica-badge">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="#0b1a8f">
+                                <path
+                                    d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" />
+                            </svg>
+                        </span>
+                        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80" alt="Trilha">
                     </div>
-                    <h3 class="dica-title" data-pt="Restaurante da Dona Maria" data-en="Dona Maria Restaurant">
-                        Restaurante da Dona Maria</h3>
-                    <p class="dica-description"
-                        data-pt="O melhor peixe da região, preparado no fogão a lenha. Ambiente familiar e autêntico. Reserve com antecedência!"
-                        data-en="The best fish in the region, prepared on a wood stove. Family and authentic atmosphere. Book in advance!">
-                        O melhor peixe da região, preparado no fogão a lenha. Ambiente familiar e autêntico. Reserve com
-                        antecedência!
-                    </p>
+                    <h3 data-pt="Trilha do Morro das Pedras" data-en="Morro das Pedras Trail">Trilha do Morro das Pedras
+                    </h3>
+                    <p data-pt="Vista de 360° de toda a ilha ao nascer do sol"
+                        data-en="360° view of the entire island at sunrise">Vista de 360° de toda a ilha ao nascer do
+                        sol</p>
                 </article>
+            </div>
+            <div class="dicas-cta">
+                <a href="#" class="btn btn-outline" data-pt="Ver todas as dicas" data-en="See all tips">Ver todas as
+                    dicas</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#home" class="footer-logo">
-                        <svg class="logo-icon" viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg" role="img"
-                            aria-label="Logo Porto Betarello">
-                            <g class="sun">
-                                <circle cx="50" cy="45" r="12" fill="#f5cc00" />
-                                <line x1="50" y1="20" x2="50" y2="28" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="62" y1="24" x2="57" y2="30" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="70" y1="33" x2="63" y2="37" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="72" y1="45" x2="64" y2="45" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="38" y1="24" x2="43" y2="30" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="30" y1="33" x2="37" y2="37" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="28" y1="45" x2="36" y2="45" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="33" y1="54" x2="39" y2="50" stroke="#f5cc00" stroke-width="2" />
-                                <line x1="67" y1="54" x2="61" y2="50" stroke="#f5cc00" stroke-width="2" />
-                            </g>
-                            <line x1="10" y1="52" x2="90" y2="52" stroke="#ebebeb" stroke-width="2" />
-                            <line x1="15" y1="56" x2="85" y2="56" stroke="#ebebeb" stroke-width="1.5" />
-                        </svg>
-                        <span class="logo-text">
-                            <span class="logo-porto">PORTO</span>
-                            <span class="logo-betarello">BETARELLO</span>
-                        </span>
-                    </a>
-                    <p class="footer-description"
-                        data-pt="Refúgios de luxo preparados com carinho pela família Betarello para proporcionar experiências inesquecíveis."
-                        data-en="Luxury retreats lovingly prepared by the Betarello family to provide unforgettable experiences.">
-                        Refúgios de luxo preparados com carinho pela família Betarello para proporcionar experiências
-                        inesquecíveis.
-                    </p>
-                </div>
-                <div class="footer-links">
-                    <h4 data-pt="Links Rápidos" data-en="Quick Links">Links Rápidos</h4>
-                    <ul>
-                        <li><a href="#home" data-pt="Início" data-en="Home">Início</a></li>
-                        <li><a href="#historia" data-pt="Nossa História" data-en="Our Story">Nossa História</a></li>
-                        <li><a href="#refugios" data-pt="Refúgios" data-en="Retreats">Refúgios</a></li>
-                        <li><a href="#dicas" data-pt="Dicas" data-en="Tips">Dicas</a></li>
-                        <li><a href="#contato" data-pt="Contato" data-en="Contact">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4 data-pt="Siga-nos" data-en="Follow Us">Siga-nos</h4>
-                    <a href="https://instagram.com/portobetarello" target="_blank" rel="noopener noreferrer"
-                        class="social-link" aria-label="Instagram">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
+    <section class="heritage-section">
+        <div class="section-header column">
+            <span class="decorative-line"></span>
+            <h2 data-pt="Feedback" data-en="Feedback">Feedback</h2>
+            <p class="dicas-subtitle" data-pt="Veja o feedback dos nossos hóspedes" data-en="See our guests' feedback">
+                Veja o feedback dos nossos hóspedes</p>
+        </div>
+        <div class="heritage-feedback">
+            <p class="feedback-text"
+                data-pt="Tive dias incríveis durante minha estadia neste apartamento em Palhoça. O lugar é simplesmente aconchegante, bonito e muito bem cuidado, daqueles que fazem a gente se sentir em casa desde o primeiro momento.
+
+O apartamento é confortável, organizado e com uma energia muito boa, perfeito para descansar e aproveitar a região. Tudo funcionou perfeitamente e a experiência como um todo foi extremamente positiva.
+
+Foram dias tranquilos, agradáveis e com muito conforto. Sem dúvida, é um lugar que recomendo para quem busca uma estadia agradável, seja para descanso ou trabalho. Com certeza ficaria novamente e guardo ótimas lembranças desse período em Palhoça."
+                data-en="I had an amazing stay in this apartment in Palhoça. The place is simply cozy, beautiful, and very well maintained, the kind of space that makes you feel at home from the very first moment.
+
+The apartment is comfortable, well organized, and has a great, positive vibe, perfect for relaxing and enjoying the area. Everything worked perfectly, and the overall experience was extremely positive.
+
+The days were peaceful, pleasant, and very comfortable. Without a doubt, it’s a place I highly recommend to anyone looking for a great stay, whether for leisure or work. I would definitely stay here again and have wonderful memories from my time in Palhoça.">
+                Tive dias incríveis durante minha estadia neste apartamento em Palhoça. O lugar é simplesmente
+                aconchegante, bonito e muito bem cuidado, daqueles que fazem a gente se sentir em casa desde o primeiro
+                momento.</p>
+            <span class="feedback-author">Thiago • Palhoça</span>
+        </div>
+        <span class="heritage-divider"></span>
+        <div class="heritage-feedback">
+            <p class="feedback-text"
+                data-pt="Mais do que uma hospedagem, foi um lugar onde nossa família desacelerou e criou memórias que vão ficar para sempre."
+                data-en="More than accommodation, it was a place where our family slowed down and created memories that will last forever.">
+                Mais do que uma hospedagem, foi um lugar onde nossa família desacelerou e criou memórias que vão ficar
+                para sempre.</p>
+            <span class="feedback-author" data-pt="Família hóspede • Verão no Sul do Brasil"
+                data-en="Guest Family • Summer in Southern Brazil">Família hóspede • Verão no Sul do Brasil</span>
+        </div>
+    </section>
+
+    <footer id="contato" class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4 data-pt="Porto Betarello" data-en="Porto Betarello">Porto Betarello</h4>
+                <span class="footer-line"></span>
+                <p data-pt="A família Betarello compartilha há gerações o prazer de hospedar e proporcionar experiências únicas em nossos refúgios."
+                    data-en="The Betarello family has shared for generations the pleasure of hosting and providing unique experiences in our retreats.">
+                    A família Betarello compartilha há gerações o prazer de hospedar e proporcionar experiências únicas
+                    em nossos refúgios.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-pt="Contato" data-en="Contact">Contato</h4>
+                <div class="footer-info">
+                    <p>✉ contato@portobetarello.com.br</p>
+                    <p>+1 (216) 337-0184</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p data-pt="© 2025 Família Betarello. Todos os direitos reservados."
-                    data-en="© 2025 Betarello Family. All rights reserved.">&copy; 2025 Família Betarello. Todos os
-                    direitos reservados.</p>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <p><i class="fa-brands fa-instagram"></i> porto_betarello</p>
             </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p data-pt="© 2025 Família Betarello. Todos os direitos reservados."
+                data-en="© 2025 Betarello Family. All rights reserved.">© 2025 Família Betarello. Todos os direitos
+                reservados.</p>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5548999999999?text=Olá! Gostaria de saber mais sobre os refúgios Porto Betarello."
-        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
-        <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg" class="whatsapp-logo" role="img"
-            aria-label="Logo Porto Betarello">
-            <g class="sun">
-                <circle cx="50" cy="45" r="12" fill="#f5cc00" />
-                <line x1="50" y1="20" x2="50" y2="28" stroke="#f5cc00" stroke-width="2" />
-                <line x1="62" y1="24" x2="57" y2="30" stroke="#f5cc00" stroke-width="2" />
-                <line x1="70" y1="33" x2="63" y2="37" stroke="#f5cc00" stroke-width="2" />
-                <line x1="72" y1="45" x2="64" y2="45" stroke="#f5cc00" stroke-width="2" />
-                <line x1="38" y1="24" x2="43" y2="30" stroke="#f5cc00" stroke-width="2" />
-                <line x1="30" y1="33" x2="37" y2="37" stroke="#f5cc00" stroke-width="2" />
-                <line x1="28" y1="45" x2="36" y2="45" stroke="#f5cc00" stroke-width="2" />
-                <line x1="33" y1="54" x2="39" y2="50" stroke="#f5cc00" stroke-width="2" />
-                <line x1="67" y1="54" x2="61" y2="50" stroke="#f5cc00" stroke-width="2" />
-            </g>
-            <line x1="10" y1="52" x2="90" y2="52" stroke="#ffffff" stroke-width="2" />
-            <line x1="15" y1="56" x2="85" y2="56" stroke="#ffffff" stroke-width="1.5" />
+    <a href="https://wa.me/5548999999999" target="_blank" class="whatsapp-float">
+        <svg viewBox="0 0 24 24" class="whatsapp-icon">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
     </a>
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <button class="lightbox-prev" id="lightboxPrev" aria-label="Imagem anterior">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <button class="lightbox-prev" id="lightboxPrev">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
         </button>
         <img id="lightboxImage" src="" alt="">
-        <button class="lightbox-next" id="lightboxNext" aria-label="Próxima imagem">
+        <button class="lightbox-next" id="lightboxNext">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
         </button>
     </div>
-
-    <a
-  href="https://wa.me/5548999999999?text=Olá%20gostaria%20de%20mais%20informações"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="whatsapp-float"
-  aria-label="WhatsApp"
->
-  <!-- Ícone WhatsApp (SVG) -->
-  <svg viewBox="0 0 24 24" class="whatsapp-icon">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-
-  <!-- Pulso -->
-  <span class="whatsapp-pulse"></span>
-</a>
-
-
     <script src="script.js"></script>
+
 </body>
 
 </html>
