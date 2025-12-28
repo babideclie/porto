@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <title>Nossos Refúgios - Porto Betarello</title>
+    
+    <title>Refúgios</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -43,7 +42,7 @@
         .mobile-nav a { font-size: 16px; font-weight: 400; color: #666; text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid #eee; }
 
         /* Page Hero */
-        .page-hero { margin-top: 80px; position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .page-hero { margin-top: 60px; position: relative; height: 70vh; min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,9,133,0.75), rgba(0,9,133,0.45)); z-index: 1; }
         .page-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         .page-hero-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 900px; padding: 0 20px; }
@@ -59,14 +58,32 @@
         .intro-highlight { font-style: italic; color: var(--azul-profundo); font-weight: 400; font-size: 19px; margin: 35px 0; padding: 25px; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
 
         /* Properties Section */
-        .properties-section { padding: 100px 20px; }
+        .properties-section { padding: 100px 20px; margin-top: -150px;}
         .properties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
         .property-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
         .property-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+        
+        /* Carousel Container */
         .property-image { position: relative; width: 100%; height: 280px; overflow: hidden; }
-        .property-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .property-card:hover .property-image img { transform: scale(1.08); }
-        .property-badge { position: absolute; top: 16px; right: 16px; background: var(--dourado-claro); color: var(--azul-profundo); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
+        .carousel-container { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.4s ease-in-out; }
+        .carousel-slide { min-width: 100%; max-width: 100%; width: 100%; height: 100%; flex-shrink: 0; flex-grow: 0; margin: 0; padding: 0; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; margin: 0; padding: 0; }
+        
+        /* Carousel Navigation */
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 100; transition: all 0.3s; opacity: 0; }
+        .property-image:hover .carousel-btn { opacity: 1; }
+        .carousel-btn:hover { background: white; transform: translateY(-50%) scale(1.1); }
+        .carousel-btn-prev { left: 10px; }
+        .carousel-btn-next { right: 10px; }
+        .carousel-btn svg { width: 20px; height: 20px; fill: var(--azul-profundo); }
+        
+        /* Carousel Indicators */
+        .carousel-indicators { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 100; }
+        .carousel-indicator { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
+        .carousel-indicator.active { background: white; width: 24px; border-radius: 4px; }
+        
+        .property-badge { position: absolute; top: 16px; right: 16px; background: var(--dourado-claro); color: var(--azul-profundo); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; z-index: 50; }
         .property-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
         .property-location { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #666; margin-bottom: 12px; }
         .property-location svg { width: 14px; height: 14px; stroke: var(--azul-profundo); }
@@ -78,6 +95,20 @@
         .feature-item svg { width: 16px; height: 16px; fill: var(--dourado-claro); }
         .btn-property { display: inline-block; width: 100%; text-align: center; padding: 14px 24px; background: var(--azul-profundo); color: white; text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: 500; transition: all 0.3s; }
         .btn-property:hover { background: #000770; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,9,133,0.25); }
+
+        /* Lightbox */
+        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 100000; }
+        .lightbox.active { display: flex; align-items: center; justify-content: center; }
+        .lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; }
+        .lightbox-image { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+        .lightbox-close { position: fixed; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 40px; cursor: pointer; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; z-index: 100001; }
+        .lightbox-close:hover { transform: scale(1.2); }
+        .lightbox-btn { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s; z-index: 100001; }
+        .lightbox-btn:hover { background: white; }
+        .lightbox-btn-prev { left: 30px; }
+        .lightbox-btn-next { right: 30px; }
+        .lightbox-btn svg { width: 24px; height: 24px; fill: var(--azul-profundo); }
+        .lightbox-counter { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); color: white; font-size: 16px; font-weight: 500; background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px; z-index: 100001; }
 
         /* Footer */
         .footer { background: #0b1a8f; color: #ffffff; padding: 80px 60px 30px; }
@@ -98,12 +129,18 @@
             .nav-desktop { display: none; }
             .menu-btn { display: block; }
             .properties-grid { grid-template-columns: 1fr; }
+            .lightbox-btn { width: 45px; height: 45px; }
+            .lightbox-btn-prev { left: 15px; }
+            .lightbox-btn-next { right: 15px; }
+            .lightbox-close { top: 15px; right: 15px; font-size: 36px; }
         }
 
         @media (max-width: 768px) {
             .footer-container { grid-template-columns: 1fr; text-align: center; }
             .footer-line { margin: 10px auto 20px; }
             .page-hero { height: 60vh; min-height: 450px; }
+            .carousel-btn { width: 32px; height: 32px; }
+            .carousel-btn svg { width: 16px; height: 16px; }
         }
     </style>
 </head>
@@ -115,7 +152,7 @@
                 <nav class="nav-desktop">
                     <a href="index.html" class="nav-link" data-pt="Início" data-en="Home">Início</a>
                     <a href="sobre.html" class="nav-link" data-pt="Nossa história" data-en="Our story">Nossa história</a>
-                    <a href="refugios.html" class="nav-link" data-pt="Refúgios" data-en="Retreats">Refúgio</a>
+                    <a href="refugios.html" class="nav-link" data-pt="Refúgios" data-en="Retreats">Refúgios</a>
                     <a href="dicas.html" class="nav-link" data-pt="Dicas da família" data-en="Family Tips">Dicas</a>
                     <a href="contato.html" class="nav-link" data-pt="Contato" data-en="Contact">Contato</a>
                 </nav>
@@ -146,7 +183,7 @@
         <nav class="mobile-nav">
             <a href="index.html" data-pt="Início" data-en="Home">Início</a>
             <a href="sobre.html" data-pt="Nossa história" data-en="Our story">Nossa história</a>
-            <a href="refugios.html" data-pt="Refúgios" data-en="Retreats">Galeria</a>
+            <a href="refugios.html" data-pt="Refúgios" data-en="Retreats">Refúgios</a>
             <a href="dicas.html" data-pt="Dicas da família" data-en="Family Tips">Dicas</a>
             <a href="contato.html" data-pt="Contato" data-en="Contact">Contato</a>
         </nav>
@@ -174,9 +211,65 @@
     <section class="properties-section">
         <div class="container">
             <div class="properties-grid">
+                <!-- Property 1 -->
                 <article class="property-card">
                     <div class="property-image">
-                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80" alt="Villa Praia do Rosa">
+                        <div class="carousel-container" data-property="0">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="floripa/8.jpeg" alt="Villa Praia do Rosa - Vista 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/1.jpeg" alt="Villa Praia do Rosa - Vista 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/10 (2).jpeg" alt="Villa Praia do Rosa - Vista 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/11 (2).jpeg" alt="Villa Praia do Rosa - Vista 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/12 (2).jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/13.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/14.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/3.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/4.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/5.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/6.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/9.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="floripa/2.jpeg" alt="Villa Praia do Rosa - Vista 5">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-btn-prev">
+                                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button class="carousel-btn carousel-btn-next">
+                                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <div class="carousel-indicators">
+                                <button class="carousel-indicator active"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                            </div>
+                        </div>
                         <span class="property-badge" data-pt="DESTAQUE" data-en="FEATURED">DESTAQUE</span>
                     </div>
                     <div class="property-content">
@@ -185,29 +278,69 @@
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                 <circle cx="12" cy="10" r="3"/>
                             </svg>
-                            <span data-pt="Praia do Rosa, SC" data-en="Praia do Rosa, SC">Praia do Rosa, SC</span>
+                            <span data-pt="Florianópolis, SC" data-en="Florianópolis, SC">Florianópolis, SC</span>
                         </div>
-                        <h3 data-pt="Villa Praia do Rosa" data-en="Villa Praia do Rosa">Villa Praia do Rosa</h3>
-                        <p data-pt="Uma villa luxuosa com vista panorâmica para o mar, piscina infinita e acesso direto à praia. Perfeita para famílias que buscam sofisticação e tranquilidade." data-en="A luxurious villa with panoramic ocean views, infinity pool and direct beach access. Perfect for families seeking sophistication and tranquility.">Uma villa luxuosa com vista panorâmica para o mar, piscina infinita e acesso direto à praia. Perfeita para famílias que buscam sofisticação e tranquilidade.</p>
+                        <h3 data-pt="Morada Da Cachoeira" data-en="Morada Da Cachoeira">Morada Da Cachoeira</h3>
+                        <p data-pt="Apartamento para 4 hóspedes com duas camas de casal. Muito aconchegante, ideal para lazer e trabalho. Ele fica localizado a 150 metros da praia. Tem vaga de garagem coberta e aceita animais." data-en="Apartment for up to 4 guests with two double beds. Very cozy, ideal for both leisure and work. Located just 150 meters from the beach. Includes a covered parking space and is pet-friendly.">#</p>
                         <div class="property-footer">
                             <div class="property-features">
                                 <div class="feature-item">
                                     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                                    <span data-pt="4 quartos" data-en="4 bedrooms">4 quartos</span>
+                                    <span data-pt="1 quarto" data-en="1 bedroom">1 quarto</span>
                                 </div>
                                 <div class="feature-item">
                                     <svg viewBox="0 0 24 24"><path d="M9 2v6h6V2M9 22v-6h6v6M2 9h6v6H2M16 9h6v6h-6z"/></svg>
-                                    <span data-pt="3 banheiros" data-en="3 bathrooms">3 banheiros</span>
+                                    <span data-pt="1 banheiro" data-en="1 bathroom">1 banheiro</span>
                                 </div>
                             </div>
-                            <a href="#" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
+                            <a href="https://www.airbnb.com.br/rooms/1543496322651033833?source_impression_id=p3_1766933698_P3VH54bBn9g6WRvs" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
                         </div>
                     </div>
                 </article>
 
+                <!-- Property 2 -->
                 <article class="property-card">
                     <div class="property-image">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Refúgio da Lagoa">
+                        <div class="carousel-container" data-property="1">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="sol/1.avif" alt="Refúgio da Lagoa - Vista 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="sol/2.jpeg" alt="Refúgio da Lagoa - Vista 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="sol/3.avif" alt="Refúgio da Lagoa - Vista 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="sol/4.avif" alt="Refúgio da Lagoa - Vista 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="sol/5.avif" alt="Refúgio da Lagoa - Vista 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="sol/6.jpeg" alt="Refúgio da Lagoa - Vista 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="sol/7.jpeg" alt="Refúgio da Lagoa - Vista 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="sol/8.jpeg" alt="Refúgio da Lagoa - Vista 4">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-btn-prev">
+                                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button class="carousel-btn carousel-btn-next">
+                                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <div class="carousel-indicators">
+                                <button class="carousel-indicator active"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="property-content">
                         <div class="property-location">
@@ -215,10 +348,179 @@
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                 <circle cx="12" cy="10" r="3"/>
                             </svg>
-                            <span data-pt="Lagoa da Conceição, SC" data-en="Lagoa da Conceição, SC">Lagoa da Conceição, SC</span>
+                            <span data-pt="Palhoça, SC" data-en="Palhoça, SC">Palhoça, SC</span>
                         </div>
-                        <h3 data-pt="Refúgio da Lagoa" data-en="Lagoa Retreat">Refúgio da Lagoa</h3>
-                        <p data-pt="Casa moderna à beira da lagoa, com deck privativo e vista espetacular para o pôr do sol. Ideal para casais e pequenas famílias." data-en="Modern lakeside house with private deck and spectacular sunset views. Ideal for couples and small families.">Casa moderna à beira da lagoa, com deck privativo e vista espetacular para o pôr do sol. Ideal para casais e pequenas famílias.</p>
+                        <h3 data-pt="Morada do Sol" data-en="Morada do Sol">Morada do Sol</h3>
+                        <p data-pt="Apartamento novo com varanda, 3 camas dando para aconchegar 6 hóspedes. 5 minutos da Praia da Pinheira. O apartamento tem câmeras de segurança e fica próximo de mercados e drogaria." data-en="Brand-new apartment with a balcony, featuring 3 beds that comfortably accommodate up to 6 guests. Located just 5 minutes from Pinheira Beach. The apartment has security cameras and is close to markets and a pharmacy.">#</p>
+                        <div class="property-footer">
+                            <div class="property-features">
+                                <div class="feature-item">
+                                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                                    <span data-pt="2 quartos" data-en="2 bedrooms">2 quartos</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 2v6h6V2M9 22v-6h6v6M2 9h6v6H2M16 9h6v6h-6z"/></svg>
+                                    <span data-pt="1 banheiro" data-en="1 bathroom">1 banheiro</span>
+                                </div>
+                            </div>
+                            <a href="https://www.airbnb.com.br/rooms/1492775160954091250?source_impression_id=p3_1766933698_P3mpK8Rv-o7nLV0P" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property 3 -->
+                <article class="property-card">
+                    <div class="property-image">
+                        <div class="carousel-container" data-property="2">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="mar/1.avif" alt="Chalé Serra - Vista 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/2.avif" alt="Chalé Serra - Vista 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/3.avif" alt="Chalé Serra - Vista 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/4.avif" alt="Chalé Serra - Vista 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/5.avif" alt="Chalé Serra - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/6.avif" alt="Chalé Serra - Vista 6">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/7.avif" alt="Chalé Serra - Vista 7">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/8.avif" alt="Chalé Serra - Vista 8">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/9.avif" alt="Chalé Serra - Vista 9">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/10.avif" alt="Chalé Serra - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/11.avif" alt="Chalé Serra - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="mar/12.avif" alt="Chalé Serra - Vista 5">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-btn-prev">
+                                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button class="carousel-btn carousel-btn-next">
+                                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <div class="carousel-indicators">
+                                <button class="carousel-indicator active"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span data-pt="Palhoça, SC" data-en="Palhoça, SC">Palhoça, SC</span>
+                        </div>
+                        <h3 data-pt="Morada do Mar" data-en="Morada do Mar">Morada do Mar</h3>
+                        <p data-pt="Apartamento novo para 6 hóspedes com 3 camas e espaço confortável. Cozinha equipada e área com churrasqueira. O apartamento tem câmeras de segurança. Estacinamento, wi-fi e ar-condicionado incluídos." data-en="Brand-new apartment for up to 6 guests, featuring 3 beds and a comfortable living space. Fully equipped kitchen and a barbecue area. The apartment has security cameras. Parking, Wi-Fi, and air conditioning included.">#</p>
+                        <div class="property-footer">
+                            <div class="property-features">
+                                <div class="feature-item">
+                                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                                    <span data-pt="2 quartos" data-en="2 bedrooms">2 quartos</span>
+                                </div>
+                                <div class="feature-item">
+                                    <svg viewBox="0 0 24 24"><path d="M9 2v6h6V2M9 22v-6h6v6M2 9h6v6H2M16 9h6v6h-6z"/></svg>
+                                    <span data-pt="1 banheiro" data-en="1 bathroom">4 banheiros</span>
+                                </div>
+                            </div>
+                            <a href="https://www.airbnb.com.br/rooms/1490512859657438882?source_impression_id=p3_1766933698_P3QdlpbkCM2VmTf_" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property 4 -->
+                <article class="property-card">
+                    <div class="property-image">
+                        <div class="carousel-container" data-property="3">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="amparo/1.avif" alt="Casa Guarujá - Vista 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/2.avif" alt="Casa Guarujá - Vista 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/3.avif" alt="Casa Guarujá - Vista 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/4.avif" alt="Casa Guarujá - Vista 4">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/5.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/6.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/7.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/8.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/9.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/10.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/11.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/12 (2).jpeg" alt="Casa Guarujá - Vista 5">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="amparo/13.avif" alt="Casa Guarujá - Vista 5">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-btn-prev">
+                                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button class="carousel-btn carousel-btn-next">
+                                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <div class="carousel-indicators">
+                                <button class="carousel-indicator active"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span data-pt="Amparo, SP" data-en="Amparo, SP">Amparo, SP</span>
+                        </div>
+                        <h3 data-pt="Casa em Amparo" data-en="House in Amparo">House in Amparo</h3>
+                        <p data-pt="Casa no interior localizada no centro da cidade de Amparo. Autêncica e aconchegante, feita para 4 hóspedes, conta com 3 quartos, sendo um suíte e 1 banheiro. Está próxima do comércio, bares e restaurantes." data-en="Country house located in the heart of Amparo. Authentic and cozy, designed to accommodate up to 4 guests. The house features 3 bedrooms, including 1 suite, and 1 bathroom. It is close to shops, bars, and restaurants.">#</p>
                         <div class="property-footer">
                             <div class="property-features">
                                 <div class="feature-item">
@@ -227,77 +529,45 @@
                                 </div>
                                 <div class="feature-item">
                                     <svg viewBox="0 0 24 24"><path d="M9 2v6h6V2M9 22v-6h6v6M2 9h6v6H2M16 9h6v6h-6z"/></svg>
-                                    <span data-pt="2 banheiros" data-en="2 bathrooms">2 banheiros</span>
+                                    <span data-pt="1 banheiro" data-en="1 bathroom">1 banheiro</span>
                                 </div>
                             </div>
-                            <a href="#" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
+                            <a href="https://www.airbnb.com.br/rooms/1425663339808746025?source_impression_id=p3_1766933698_P3zuVuJ7oLDZ9VD7" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
                         </div>
                     </div>
                 </article>
 
+                <!-- Property 5 
                 <article class="property-card">
                     <div class="property-image">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Chalé Serra da Mantiqueira">
-                    </div>
-                    <div class="property-content">
-                        <div class="property-location">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                            <span data-pt="Campos do Jordão, SP" data-en="Campos do Jordão, SP">Campos do Jordão, SP</span>
-                        </div>
-                        <h3 data-pt="Chalé Serra da Mantiqueira" data-en="Mantiqueira Mountain Chalet">Chalé Serra da Mantiqueira</h3>
-                        <p data-pt="Aconchegante chalé nas montanhas com lareira, vista panorâmica e trilhas particulares. O refúgio perfeito para o inverno." data-en="Cozy mountain chalet with fireplace, panoramic views and private trails. The perfect winter retreat.">Aconchegante chalé nas montanhas com lareira, vista panorâmica e trilhas particulares. O refúgio perfeito para o inverno.</p>
-                        <div class="property-footer">
-                            <div class="property-features">
-                                <div class="feature-item">
-                                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                                    <span data-pt="5 quartos" data-en="5 bedrooms">5 quartos</span>
+                        <div class="carousel-container" data-property="4">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80" alt="Loft Palhoça - Vista 1">
                                 </div>
-                                <div class="feature-item">
-                                    <svg viewBox="0 0 24 24"><path d="M9 2v6h6V2M9 22v-6h6v6M2 9h6v6H2M16 9h6v6h-6z"/></svg>
-                                    <span data-pt="4 banheiros" data-en="4 bathrooms">4 banheiros</span>
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80" alt="Loft Palhoça - Vista 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80" alt="Loft Palhoça - Vista 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&q=80" alt="Loft Palhoça - Vista 4">
                                 </div>
                             </div>
-                            <a href="#" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="property-card">
-                    <div class="property-image">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Casa Guarujá">
-                    </div>
-                    <div class="property-content">
-                        <div class="property-location">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                            <span data-pt="Guarujá, SP" data-en="Guarujá, SP">Guarujá, SP</span>
-                        </div>
-                        <h3 data-pt="Casa Guarujá" data-en="Guarujá House">Casa Guarujá</h3>
-                        <p data-pt="Arquitetura contemporânea em frente à praia, com piscina aquecida, sauna e espaço gourmet completo. Luxo e conforto à beira-mar." data-en="Contemporary architecture beachfront, with heated pool, sauna and complete gourmet space. Luxury and comfort by the sea.">Arquitetura contemporânea em frente à praia, com piscina aquecida, sauna e espaço gourmet completo. Luxo e conforto à beira-mar.</p>
-                        <div class="property-footer">
-                            <div class="property-features">
-                                <div class="feature-item">
-                                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                                    <span data-pt="6 quartos" data-en="6 bedrooms">6 quartos</span>
-                                </div>
-                                <div class="feature-item">
-                                    <svg viewBox="0 0 24 24"><path d="M9 2v6h6V2M9 22v-6h6v6M2 9h6v6H2M16 9h6v6h-6z"/></svg>
-                                    <span data-pt="5 banheiros" data-en="5 bathrooms">5 banheiros</span>
-                                </div>
+                            <button class="carousel-btn carousel-btn-prev">
+                                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button class="carousel-btn carousel-btn-next">
+                                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <div class="carousel-indicators">
+                                <button class="carousel-indicator active"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
+                                <button class="carousel-indicator"></button>
                             </div>
-                            <a href="#" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
                         </div>
-                    </div>
-                </article>
-
-                <article class="property-card">
-                    <div class="property-image">
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80" alt="Loft Palhoça">
                     </div>
                     <div class="property-content">
                         <div class="property-location">
@@ -323,10 +593,25 @@
                             <a href="#" class="btn-property" data-pt="Ver detalhes e reservar" data-en="View details & book">Ver detalhes e reservar</a>
                         </div>
                     </div>
-                </article>
+                </article> -->
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+            <button class="lightbox-btn lightbox-btn-prev" id="lightboxPrev">
+                <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="lightbox-btn lightbox-btn-next" id="lightboxNext">
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="lightbox-counter" id="lightboxCounter"></div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">
@@ -338,8 +623,10 @@
             <div class="footer-col">
                 <h4 data-pt="Contato" data-en="Contact">Contato</h4>
                 <div class="footer-info">
+                    <div class="footer-info">
                     <p>✉ contato@portobetarello.com.br</p>
                     <p>+1 (216) 337-0184</p>
+                </div>
                 </div>
             </div>
             <div class="footer-col">
@@ -356,9 +643,116 @@
         <svg viewBox="0 0 24 24" class="whatsapp-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         let currentLang = 'pt';
+        const carousels = [];
 
+        // Carousel Class
+        class Carousel {
+            constructor(container) {
+                this.container = container;
+                this.track = container.querySelector('.carousel-track');
+                this.slides = container.querySelectorAll('.carousel-slide');
+                this.prevBtn = container.querySelector('.carousel-btn-prev');
+                this.nextBtn = container.querySelector('.carousel-btn-next');
+                this.indicators = container.querySelectorAll('.carousel-indicator');
+                this.currentIndex = 0;
+                this.propertyId = container.getAttribute('data-property');
+                
+                this.init();
+            }
+
+            init() {
+                this.prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.prev();
+                });
+                
+                this.nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.next();
+                });
+
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.goToSlide(index);
+                    });
+                });
+
+                // Click on image to open lightbox
+                this.slides.forEach((slide, index) => {
+                    slide.addEventListener('click', () => {
+                        openLightbox(this.propertyId, index);
+                    });
+                });
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                const offset = -index * 100;
+                this.track.style.transform = `translateX(${offset}%)`;
+                
+                this.indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === index);
+                });
+            }
+
+            next() {
+                this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+                this.goToSlide(this.currentIndex);
+            }
+
+            prev() {
+                this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+                this.goToSlide(this.currentIndex);
+            }
+        }
+
+        // Lightbox functionality
+        let currentLightboxProperty = null;
+        let currentLightboxIndex = 0;
+        let lightboxImages = [];
+
+        function openLightbox(propertyId, imageIndex) {
+            const lightbox = document.getElementById('lightbox');
+            const container = document.querySelector(`[data-property="${propertyId}"]`);
+            const images = container.querySelectorAll('.carousel-slide img');
+            
+            lightboxImages = Array.from(images).map(img => img.src);
+            currentLightboxProperty = propertyId;
+            currentLightboxIndex = imageIndex;
+            
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxImage() {
+            const lightboxImage = document.getElementById('lightboxImage');
+            const counter = document.getElementById('lightboxCounter');
+            
+            lightboxImage.src = lightboxImages[currentLightboxIndex];
+            counter.textContent = `${currentLightboxIndex + 1} / ${lightboxImages.length}`;
+        }
+
+        function nextLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+            updateLightboxImage();
+        }
+
+        function prevLightboxImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+            updateLightboxImage();
+        }
+
+        // Language functionality
         function changeLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('preferredLanguage', lang);
@@ -404,6 +798,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             initLanguage();
 
+            // Initialize carousels
+            document.querySelectorAll('.carousel-container').forEach(container => {
+                carousels.push(new Carousel(container));
+            });
+
+            // Language switch
             document.querySelectorAll('.lang-option').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const lang = btn.getAttribute('data-lang');
@@ -411,6 +811,7 @@
                 });
             });
 
+            // Mobile menu
             document.getElementById('menuToggle').addEventListener('click', toggleMobileMenu);
 
             document.querySelectorAll('.mobile-nav a').forEach(link => {
@@ -419,6 +820,28 @@
                 });
             });
 
+            // Lightbox controls
+            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+            document.getElementById('lightboxNext').addEventListener('click', nextLightboxImage);
+            document.getElementById('lightboxPrev').addEventListener('click', prevLightboxImage);
+
+            // Close lightbox on background click
+            document.getElementById('lightbox').addEventListener('click', (e) => {
+                if (e.target.id === 'lightbox') {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard navigation for lightbox
+            document.addEventListener('keydown', (e) => {
+                if (document.getElementById('lightbox').classList.contains('active')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowRight') nextLightboxImage();
+                    if (e.key === 'ArrowLeft') prevLightboxImage();
+                }
+            });
+
+            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
