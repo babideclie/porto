@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Dicas</title>
+    <title>Dicas da Família - Porto Betarello</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -84,6 +84,32 @@
         .tip-content h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--azul-profundo); margin-bottom: 12px; line-height: 1.3; }
         .tip-content p { font-size: 15px; font-weight: 300; line-height: 1.7; color: #555; }
 
+        /* Shop Section */
+        .shop-section { padding: 100px 20px; background: white; }
+        .shop-header { text-align: center; margin-bottom: 60px; }
+        .shop-header h2 { font-family: var(--font-heading); font-size: clamp(36px, 5vw, 48px); font-weight: 700; color: var(--azul-profundo); margin-bottom: 15px; }
+        .shop-header p { font-size: 17px; font-weight: 300; color: #555; max-width: 700px; margin: 0 auto; }
+        .shop-carousel { position: relative; max-width: 1100px; margin: 0 auto 40px; }
+        .shop-carousel-wrapper { overflow: hidden; padding: 10px 5px; }
+        .shop-track { display: flex; gap: 30px; transition: transform 0.5s ease; width: fit-content; }
+        .product-card { flex: 0 0 340px; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+        .product-image { width: 100%; height: 280px; overflow: hidden; background: #f5f5f5; position: relative; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+        .product-card:hover .product-image img { transform: scale(1.08); }
+        .product-info { padding: 24px; }
+        .product-info h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--azul-profundo); margin-bottom: 10px; }
+        .product-info p { font-size: 15px; font-weight: 300; color: #666; line-height: 1.6; margin-bottom: 12px; }
+        .product-price { font-size: 22px; font-weight: 600; color: var(--dourado-claro); }
+        .carousel-controls { display: flex; justify-content: center; gap: 16px; margin-top: 40px; }
+        .carousel-control-btn { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--azul-profundo); background: white; color: var(--azul-profundo); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .carousel-control-btn:hover { background: var(--azul-profundo); color: white; }
+        .carousel-control-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .carousel-control-btn i { font-size: 18px; }
+        .shop-cta { text-align: center; margin-top: 50px; }
+        .btn-shop { display: inline-block; padding: 16px 40px; background: var(--azul-profundo); color: white; text-decoration: none; border-radius: 12px; font-size: 16px; font-weight: 500; transition: all 0.3s; }
+        .btn-shop:hover { background: #000770; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,9,133,0.25); }
+
         /* Wellness Partner Section */
         .wellness-section { padding: 120px 20px; background: linear-gradient(135deg, rgba(0,9,133,0.03) 0%, rgba(245,204,0,0.05) 100%); position: relative; overflow: hidden; }
         .wellness-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(245,204,0,0.1) 0%, transparent 70%); border-radius: 50%; }
@@ -128,6 +154,8 @@
             .wellness-features { grid-template-columns: 1fr; }
             .tabs-container { justify-content: flex-start; gap: 8px; }
             .tab-btn { padding: 10px 20px; font-size: 13px; }
+            .product-card { flex: 0 0 280px; }
+            .shop-carousel-wrapper { padding: 10px 10px; }
         }
 
         @media (max-width: 768px) {
@@ -135,11 +163,17 @@
             .footer-line { margin: 10px auto 20px; }
             .tips-hero { height: 55vh; min-height: 420px; }
             .tab-btn { padding: 10px 18px; font-size: 12px; }
+            .product-card { flex: 0 0 calc(100vw - 60px); max-width: 400px; }
+            .shop-track { gap: 20px; }
+            .shop-carousel-wrapper { padding: 10px 20px; }
+            .product-image { height: 240px; }
         }
 
         @media (max-width: 480px) {
             .tab-btn { padding: 8px 16px; font-size: 12px; }
             .tabs-container { gap: 6px; }
+            .product-card { flex: 0 0 calc(100vw - 50px); }
+            .shop-carousel-wrapper { padding: 10px 15px; }
         }
     </style>
 </head>
@@ -151,7 +185,7 @@
                 <nav class="nav-desktop">
                     <a href="index.html" class="nav-link" data-pt="Início" data-en="Home">Início</a>
                     <a href="sobre.html" class="nav-link" data-pt="Nossa história" data-en="Our story">Nossa história</a>
-                    <a href="refugios.html" class="nav-link" data-pt="Refúgios" data-en="Retreats">Refúgio</a>
+                    <a href="refugios.html" class="nav-link" data-pt="Refúgios" data-en="Retreats">Refúgios</a>
                     <a href="dicas.html" class="nav-link" data-pt="Dicas da família" data-en="Family Tips">Dicas</a>
                     <a href="contato.html" class="nav-link" data-pt="Contato" data-en="Contact">Contato</a>
                 </nav>
@@ -182,7 +216,7 @@
         <nav class="mobile-nav">
             <a href="index.html" data-pt="Início" data-en="Home">Início</a>
             <a href="sobre.html" data-pt="Nossa história" data-en="Our story">Nossa história</a>
-            <a href="refugios.html" data-pt="Refúgios" data-en="Retreats">Galeria</a>
+            <a href="refugios.html" data-pt="Refúgios" data-en="Retreats">Refúgios</a>
             <a href="dicas.html" data-pt="Dicas da família" data-en="Family Tips">Dicas</a>
             <a href="contato.html" data-pt="Contato" data-en="Contact">Contato</a>
         </nav>
@@ -331,6 +365,100 @@
         </div>
     </section>
 
+    <section class="shop-section">
+        <div class="container">
+            <div class="shop-header">
+                <h2 data-pt="Nossa Loja" data-en="Our Shop">Nossa Loja</h2>
+                <p data-pt="Produtos selecionados especialmente para complementar sua experiência em nossos refúgios." data-en="Products specially selected to complement your experience in our retreats.">Produtos selecionados especialmente para complementar sua experiência em nossos refúgios.</p>
+            </div>
+            
+            <div class="shop-carousel">
+                <div class="shop-carousel-wrapper">
+                    <div class="shop-track" id="shopTrack">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800&q=80" alt="Kit amenities">
+                        </div>
+                        <div class="product-info">
+                            <h3 data-pt="Kit Amenities Premium" data-en="Premium Amenities Kit">Kit Amenities Premium</h3>
+                            <p data-pt="Produtos de banho artesanais com fragrâncias naturais. Perfeito para presentear ou levar para casa." data-en="Handcrafted bath products with natural fragrances. Perfect for gifting or taking home.">Produtos de banho artesanais com fragrâncias naturais. Perfeito para presentear ou levar para casa.</p>
+                            <div class="product-price">R$ 89,90</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80" alt="Cesta café">
+                        </div>
+                        <div class="product-info">
+                            <h3 data-pt="Cesta Café da Manhã Especial" data-en="Special Breakfast Basket">Cesta Café da Manhã Especial</h3>
+                            <p data-pt="Delícias locais incluindo pães artesanais, geleias caseiras e café especial da região." data-en="Local delicacies including artisan breads, homemade jams and special regional coffee.">Delícias locais incluindo pães artesanais, geleias caseiras e café especial da região.</p>
+                            <div class="product-price">R$ 149,90</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80" alt="Vela aromática">
+                        </div>
+                        <div class="product-info">
+                            <h3 data-pt="Vela Aromática Porto" data-en="Porto Scented Candle">Vela Aromática Porto</h3>
+                            <p data-pt="Fragrância exclusiva que remete aos nossos refúgios. Feita à mão com cera de soja natural." data-en="Exclusive fragrance that evokes our retreats. Handmade with natural soy wax.">Fragrância exclusiva que remete aos nossos refúgios. Feita à mão com cera de soja natural.</p>
+                            <div class="product-price">R$ 65,00</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&q=80" alt="Toalha">
+                        </div>
+                        <div class="product-info">
+                            <h3 data-pt="Conjunto de Toalhas Luxo" data-en="Luxury Towel Set">Conjunto de Toalhas Luxo</h3>
+                            <p data-pt="As mesmas toalhas macias dos nossos refúgios. 100% algodão egípcio premium." data-en="The same soft towels from our retreats. 100% premium Egyptian cotton.">As mesmas toalhas macias dos nossos refúgios. 100% algodão egípcio premium.</p>
+                            <div class="product-price">R$ 299,00</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80" alt="Livro">
+                        </div>
+                        <div class="product-info">
+                            <h3 data-pt="Guia de Trilhas Ilustrado" data-en="Illustrated Trail Guide">Guia de Trilhas Ilustrado</h3>
+                            <p data-pt="Todas as melhores trilhas da região com mapas, dicas e fotografias exclusivas." data-en="All the best trails in the region with maps, tips and exclusive photographs.">Todas as melhores trilhas da região com mapas, dicas e fotografias exclusivas.</p>
+                            <div class="product-price">R$ 79,90</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80" alt="Voucher">
+                        </div>
+                        <div class="product-info">
+                            <h3 data-pt="Vale-Presente Experiência" data-en="Experience Gift Card">Vale-Presente Experiência</h3>
+                            <p data-pt="O presente perfeito! Vale para hospedagem em qualquer um dos nossos refúgios." data-en="The perfect gift! Valid for accommodation at any of our retreats.">O presente perfeito! Vale para hospedagem em qualquer um dos nossos refúgios.</p>
+                            <div class="product-price" data-pt="A partir de R$ 500" data-en="From R$ 500">A partir de R$ 500</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-control-btn" id="shopPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-control-btn" id="shopNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="shop-cta">
+                <a href="#" class="btn-shop" data-pt="Acessar Nossa Loja" data-en="Visit Our Shop">Acessar Nossa Loja</a>
+            </div>
+        </div>
+    </section>
+
     <section class="wellness-section">
         <div class="wellness-container">
             <center>
@@ -415,6 +543,13 @@
 
     <script>
         let currentLang = 'pt';
+        let shopCurrentIndex = 0;
+
+        function getCardsToShow() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 900) return 2;
+            return 3;
+        }
 
         function changeLanguage(lang) {
             currentLang = lang;
@@ -507,6 +642,63 @@
                     filterTips(category);
                 });
             });
+
+            // Shop Carousel
+            const shopTrack = document.getElementById('shopTrack');
+            const shopPrevBtn = document.getElementById('shopPrev');
+            const shopNextBtn = document.getElementById('shopNext');
+            const productCards = document.querySelectorAll('.product-card');
+            const totalShopCards = productCards.length;
+            
+            function updateShopCarousel() {
+                const cardsToShow = getCardsToShow();
+                let cardWidth = 340;
+                let gap = 30;
+                
+                if (window.innerWidth <= 768) {
+                    cardWidth = Math.min(window.innerWidth - 60, 400);
+                    gap = 20;
+                } else if (window.innerWidth <= 900) {
+                    cardWidth = 280;
+                    gap = 30;
+                }
+                
+                const offset = -(shopCurrentIndex * (cardWidth + gap));
+                shopTrack.style.transform = `translateX(${offset}px)`;
+                
+                // Update button states
+                shopPrevBtn.disabled = shopCurrentIndex === 0;
+                shopNextBtn.disabled = shopCurrentIndex >= totalShopCards - cardsToShow;
+            }
+
+            shopPrevBtn.addEventListener('click', () => {
+                if (shopCurrentIndex > 0) {
+                    shopCurrentIndex--;
+                    updateShopCarousel();
+                }
+            });
+
+            shopNextBtn.addEventListener('click', () => {
+                const cardsToShow = getCardsToShow();
+                const maxIndex = totalShopCards - cardsToShow;
+                if (shopCurrentIndex < maxIndex) {
+                    shopCurrentIndex++;
+                    updateShopCarousel();
+                }
+            });
+
+            // Reset carousel on window resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    shopCurrentIndex = 0;
+                    updateShopCarousel();
+                }, 250);
+            });
+
+            // Initialize carousel
+            updateShopCarousel();
         });
     </script>
 </body>
