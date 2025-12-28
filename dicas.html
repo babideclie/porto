@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
     <title>Dicas</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,7 +15,7 @@
             --font-body: 'Inter', sans-serif;
         }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); font-weight: 300; color: #1a1a1a; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        body { font-family: var(--font-body); font-weight: 300; color: #1a1a1a; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* Header */
@@ -42,28 +41,71 @@
         .mobile-nav { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
         .mobile-nav a { font-size: 16px; font-weight: 400; color: #666; text-decoration: none; padding-bottom: 8px; border-bottom: 1px solid #eee; }
 
-        /* Coming Soon Section */
-        .coming-soon-section { flex: 1; margin-top: 80px; display: flex; align-items: center; justify-content: center; padding: 60px 20px; background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%); }
-        .coming-soon-content { text-align: center; max-width: 700px; }
-        .coming-soon-icon { width: 120px; height: 120px; margin: 0 auto 40px; background: linear-gradient(135deg, rgba(0,9,133,0.05), rgba(245,204,0,0.1)); border: 3px solid var(--dourado-claro); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 2s ease-in-out infinite; }
-        .coming-soon-icon i { font-size: 50px; color: var(--azul-profundo); }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245,204,0,0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(245,204,0,0); }
-        }
-        .decorative-line { width: 77px; height: 2px; background: linear-gradient(90deg, #d8a900, var(--dourado-claro)); margin: 0 auto 25px; }
-        .coming-soon-content h1 { font-family: var(--font-heading); font-size: clamp(42px, 6vw, 64px); font-weight: 700; color: var(--azul-profundo); margin-bottom: 25px; line-height: 1.2; }
-        .coming-soon-content p { font-size: clamp(16px, 2.5vw, 20px); font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 20px; }
-        .coming-soon-highlight { font-style: italic; color: var(--azul-profundo); font-weight: 400; font-size: clamp(17px, 2.5vw, 22px); margin: 35px 0; padding: 25px; background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-left: 4px solid var(--dourado-claro); }
-        .coming-soon-buttons { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 40px; }
-        .btn { display: inline-block; padding: 14px 32px; font-size: 15px; font-weight: 500; text-decoration: none; border-radius: 10px; transition: all 0.3s; }
-        .btn-primary { background: var(--azul-profundo); color: white; }
-        .btn-primary:hover { background: #000770; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,9,133,0.25); }
-        .btn-outline { border: 2px solid var(--azul-profundo); color: var(--azul-profundo); background: transparent; }
-        .btn-outline:hover { background: var(--azul-profundo); color: white; }
+        /* Hero */
+        .tips-hero { margin-top: 80px; position: relative; height: 65vh; min-height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .tips-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,9,133,0.75), rgba(0,9,133,0.5)); z-index: 1; }
+        .tips-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .tips-hero-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 850px; padding: 0 20px; }
+        .hero-line { display: block; width: 77px; height: 1px; background: linear-gradient(90deg, #d8a900, var(--dourado-claro)); margin: 0 auto 20px; }
+        .tips-hero h1 { font-family: var(--font-heading); font-size: clamp(46px, 7vw, 68px); font-weight: 700; margin-bottom: 22px; line-height: 1.1; }
+        .tips-hero p { font-size: clamp(16px, 2.5vw, 19px); font-weight: 300; line-height: 1.8; opacity: 0.95; }
+
+        /* Intro */
+        .intro-section { padding: 100px 20px; background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%); }
+        .intro-content { max-width: 900px; margin: 0 auto; text-align: center; }
+        .intro-content h2 { font-family: var(--font-heading); font-size: clamp(34px, 5vw, 46px); font-weight: 700; color: var(--azul-profundo); margin-bottom: 25px; line-height: 1.2; }
+        .intro-content p { font-size: 18px; font-weight: 300; line-height: 1.9; color: #333; margin-bottom: 18px; }
+        .intro-highlight { font-style: italic; color: var(--azul-profundo); font-weight: 400; font-size: 20px; margin: 35px 0; padding: 30px; background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-left: 4px solid var(--dourado-claro); }
+
+        /* Category Tabs */
+        .category-tabs { padding: 60px 20px 40px; background: white; border-bottom: 2px solid #f0f0f0; }
+        .tabs-container { max-width: 900px; margin: 0 auto; display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
+        .tabs-container::-webkit-scrollbar { display: none; }
+        .tab-btn { padding: 12px 24px; background: white; border: 2px solid #e0e0e0; border-radius: 30px; font-family: var(--font-body); font-size: 14px; font-weight: 500; color: #666; cursor: pointer; transition: all 0.3s; white-space: nowrap; flex-shrink: 0; -webkit-tap-highlight-color: transparent; user-select: none; }
+        .tab-btn:active { transform: scale(0.95); }
+        .tab-btn:hover { border-color: var(--dourado-claro); color: var(--azul-profundo); }
+        .tab-btn.active { background: var(--azul-profundo); border-color: var(--azul-profundo); color: white; }
+
+        /* Tips Grid */
+        .tips-section { padding: 80px 20px; }
+        .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 35px; }
+        .tip-card { background: white; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 35px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .tip-card:hover { transform: translateY(-10px); box-shadow: 0 18px 45px rgba(0,0,0,0.14); }
+        .tip-image { position: relative; width: 100%; height: 240px; overflow: hidden; }
+        .tip-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .tip-card:hover .tip-image img { transform: scale(1.1); }
+        .tip-category-badge { position: absolute; top: 16px; left: 16px; padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-trail { background: rgba(76,175,80,0.95); color: white; }
+        .badge-food { background: rgba(255,152,0,0.95); color: white; }
+        .badge-tourism { background: rgba(33,150,243,0.95); color: white; }
+        .tip-content { padding: 26px; }
+        .tip-location { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #777; margin-bottom: 12px; }
+        .tip-location i { color: var(--dourado-claro); font-size: 14px; }
+        .tip-content h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--azul-profundo); margin-bottom: 12px; line-height: 1.3; }
+        .tip-content p { font-size: 15px; font-weight: 300; line-height: 1.7; color: #555; }
+
+        /* Wellness Partner Section */
+        .wellness-section { padding: 120px 20px; background: linear-gradient(135deg, rgba(0,9,133,0.03) 0%, rgba(245,204,0,0.05) 100%); position: relative; overflow: hidden; }
+        .wellness-section::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(245,204,0,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .wellness-section::after { content: ''; position: absolute; bottom: -150px; left: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,9,133,0.05) 0%, transparent 70%); border-radius: 50%; }
+        .wellness-container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+        .wellness-badge { display: inline-block; padding: 10px 24px; background: var(--dourado-claro); color: var(--azul-profundo); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 25px; margin-bottom: 25px; }
+        .wellness-content { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .wellness-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.15); }
+        .wellness-image img { width: 100%; height: 550px; object-fit: cover; }
+        .wellness-text h2 { font-family: var(--font-heading); font-size: clamp(36px, 5vw, 52px); font-weight: 700; color: var(--azul-profundo); margin-bottom: 22px; line-height: 1.2; }
+        .wellness-text p { font-size: 17px; font-weight: 300; line-height: 1.9; color: #333; margin-bottom: 18px; }
+        .wellness-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 35px 0; }
+        .wellness-feature { display: flex; align-items: start; gap: 12px; padding: 18px; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .wellness-feature i { color: var(--dourado-claro); font-size: 22px; margin-top: 2px; }
+        .wellness-feature-text h4 { font-size: 16px; font-weight: 600; color: var(--azul-profundo); margin-bottom: 4px; }
+        .wellness-feature-text p { font-size: 14px; color: #666; line-height: 1.5; }
+        .wellness-cta { display: inline-flex; align-items: center; gap: 12px; padding: 16px 36px; background: var(--azul-profundo); color: white; text-decoration: none; border-radius: 12px; font-size: 16px; font-weight: 500; transition: all 0.3s; margin-top: 20px; }
+        .wellness-cta:hover { background: #000770; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,9,133,0.25); }
+        .wellness-cta i { font-size: 20px; }
 
         /* Footer */
-        .footer { background: #0b1a8f; color: #ffffff; padding: 80px 60px 30px; margin-top: auto; }
+        .footer { background: #0b1a8f; color: #ffffff; padding: 80px 60px 30px; }
         .footer-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; max-width: 1200px; margin: 0 auto; }
         .footer h4 { font-size: 20px; margin-bottom: 12px; font-weight: 600; }
         .footer-line { display: block; width: 40px; height: 2px; background: #f5cc00; margin-bottom: 20px; }
@@ -80,13 +122,24 @@
         @media (max-width: 900px) {
             .nav-desktop { display: none; }
             .menu-btn { display: block; }
-            .coming-soon-buttons { flex-direction: column; align-items: stretch; }
-            .btn { text-align: center; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .wellness-content { grid-template-columns: 1fr; gap: 40px; }
+            .wellness-image img { height: 400px; }
+            .wellness-features { grid-template-columns: 1fr; }
+            .tabs-container { justify-content: flex-start; gap: 8px; }
+            .tab-btn { padding: 10px 20px; font-size: 13px; }
         }
 
         @media (max-width: 768px) {
             .footer-container { grid-template-columns: 1fr; text-align: center; }
             .footer-line { margin: 10px auto 20px; }
+            .tips-hero { height: 55vh; min-height: 420px; }
+            .tab-btn { padding: 10px 18px; font-size: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .tab-btn { padding: 8px 16px; font-size: 12px; }
+            .tabs-container { gap: 6px; }
         }
     </style>
 </head>
@@ -135,19 +188,199 @@
         </nav>
     </div>
 
-    <section class="coming-soon-section">
-        <div class="coming-soon-content">
-            <div class="coming-soon-icon">
-                <i class="fas fa-compass"></i>
+    <section class="tips-hero">
+        <img class="tips-hero-bg" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Beautiful destination">
+        <div class="tips-hero-content">
+            <span class="hero-line"></span>
+            <h1 data-pt="Dicas da Família" data-en="Family Tips">Dicas da Família</h1>
+            <p data-pt="Os segredos mais bem guardados da região, compartilhados com carinho pela família Betarello. Lugares que amamos e queremos que você também descubra." data-en="The region's best-kept secrets, lovingly shared by the Betarello family. Places we love and want you to discover too.">Os segredos mais bem guardados da região, compartilhados com carinho pela família Betarello. Lugares que amamos e queremos que você também descubra.</p>
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <h2 data-pt="Explore Como Um Local" data-en="Explore Like a Local">Explore Como Um Local</h2>
+                <p data-pt="Viver aqui por gerações nos deu algo especial: conhecimento profundo dos lugares mais autênticos e experiências que você não encontra nos guias turísticos convencionais." data-en="Living here for generations has given us something special: deep knowledge of the most authentic places and experiences you won't find in conventional tourist guides.">Viver aqui por gerações nos deu algo especial: conhecimento profundo dos lugares mais autênticos e experiências que você não encontra nos guias turísticos convencionais.</p>
+                <div class="intro-highlight" data-pt="Estas são nossas dicas pessoais - aquela praia escondida onde levamos os amigos, o restaurante familiar que serve o melhor peixe da região, a trilha com a vista mais incrível ao amanhecer." data-en="These are our personal tips - that hidden beach where we take friends, the family restaurant that serves the best fish in the region, the trail with the most incredible sunrise view.">Estas são nossas dicas pessoais - aquela praia escondida onde levamos os amigos, o restaurante familiar que serve o melhor peixe da região, a trilha com a vista mais incrível ao amanhecer.</div>
+                <p data-pt="Explore, descubra e crie memórias inesquecíveis com as nossas recomendações." data-en="Explore, discover and create unforgettable memories with our recommendations.">Explore, descubra e crie memórias inesquecíveis com as nossas recomendações.</p>
             </div>
-            <span class="decorative-line"></span>
-            <h1 data-pt="Em Breve" data-en="Coming Soon">Em Breve</h1>
-            <p data-pt="Estamos preparando algo especial para você! Nossa seção de dicas está sendo cuidadosamente elaborada para compartilhar os segredos mais bem guardados da família Betarello." data-en="We're preparing something special for you! Our tips section is being carefully crafted to share the Betarello family's best-kept secrets.">Estamos preparando algo especial para você! Nossa seção de dicas está sendo cuidadosamente elaborada para compartilhar os segredos mais bem guardados da família Betarello.</p>
-            <div class="coming-soon-highlight" data-pt="Restaurantes escondidos, praias secretas, trilhas inesquecíveis e experiências autênticas que só quem mora aqui conhece." data-en="Hidden restaurants, secret beaches, unforgettable trails and authentic experiences that only locals know.">Restaurantes escondidos, praias secretas, trilhas inesquecíveis e experiências autênticas que só quem mora aqui conhece.</div>
-            <p data-pt="Enquanto isso, siga-nos no Instagram para dicas exclusivas e atualizações!" data-en="Meanwhile, follow us on Instagram for exclusive tips and updates!">Enquanto isso, siga-nos no Instagram para dicas exclusivas e atualizações!</p>
-            <div class="coming-soon-buttons">
-                <a href="refugios.html" class="btn btn-primary" data-pt="Conheça Nossos Refúgios" data-en="Discover Our Retreats">Conheça Nossos Refúgios</a>
-                <a href="contato.html" class="btn btn-outline" data-pt="Entre em Contato" data-en="Contact Us">Entre em Contato</a>
+        </div>
+    </section>
+
+    <section class="category-tabs">
+        <div class="tabs-container">
+            <button class="tab-btn active" data-category="all" data-pt="Todas" data-en="All">Todas</button>
+            <button class="tab-btn" data-category="trail" data-pt="Trilhas" data-en="Trails">Trilhas</button>
+            <button class="tab-btn" data-category="food" data-pt="Gastronomia" data-en="Gastronomy">Gastronomia</button>
+            <button class="tab-btn" data-category="tourism" data-pt="Turismo" data-en="Tourism">Turismo</button>
+        </div>
+    </section>
+
+    <section class="tips-section">
+        <div class="container">
+            <div class="tips-grid" id="tipsGrid">
+                <!-- Trilhas -->
+                <article class="tip-card" data-category="trail">
+                    <div class="tip-image">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80" alt="Trilha">
+                        <span class="tip-category-badge badge-trail" data-pt="TRILHA" data-en="TRAIL">TRILHA</span>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-pt="Florianópolis, SC" data-en="Florianópolis, SC">Florianópolis, SC</span>
+                        </div>
+                        <h3 data-pt="Trilha da Lagoinha do Leste" data-en="Lagoinha do Leste Trail">Trilha da Lagoinha do Leste</h3>
+                        <p data-pt="Uma das trilhas mais bonitas da ilha! São 2h de caminhada moderada que termina em uma praia paradisíaca e deserta. Leve água e lanche, vale muito a pena." data-en="One of the most beautiful trails on the island! It's a 2-hour moderate hike that ends at a paradisiacal and deserted beach. Bring water and snacks, it's totally worth it.">Uma das trilhas mais bonitas da ilha! São 2h de caminhada moderada que termina em uma praia paradisíaca e deserta. Leve água e lanche, vale muito a pena.</p>
+                    </div>
+                </article>
+
+                <article class="tip-card" data-category="trail">
+                    <div class="tip-image">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Trilha">
+                        <span class="tip-category-badge badge-trail" data-pt="TRILHA" data-en="TRAIL">TRILHA</span>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-pt="Praia do Rosa, SC" data-en="Praia do Rosa, SC">Praia do Rosa, SC</span>
+                        </div>
+                        <h3 data-pt="Trilha do Morro das Pedras" data-en="Morro das Pedras Trail">Trilha do Morro das Pedras</h3>
+                        <p data-pt="Vista 360° de tirar o fôlego! A trilha é curta (40 min) mas íngreme. Vá ao nascer do sol para uma experiência mágica. Nosso spot secreto para meditação." data-en="Breathtaking 360° view! The trail is short (40 min) but steep. Go at sunrise for a magical experience. Our secret spot for meditation.">Vista 360° de tirar o fôlego! A trilha é curta (40 min) mas íngreme. Vá ao nascer do sol para uma experiência mágica. Nosso spot secreto para meditação.</p>
+                    </div>
+                </article>
+
+                <!-- Gastronomia -->
+                <article class="tip-card" data-category="food">
+                    <div class="tip-image">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurante">
+                        <span class="tip-category-badge badge-food" data-pt="GASTRONOMIA" data-en="GASTRONOMY">GASTRONOMIA</span>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-pt="Florianópolis, SC" data-en="Florianópolis, SC">Florianópolis, SC</span>
+                        </div>
+                        <h3 data-pt="Restaurante Ostradamus" data-en="Ostradamus Restaurant">Restaurante Ostradamus</h3>
+                        <p data-pt="As melhores ostras da região! Ambiente aconchegante com vista para o mar. Peça o combo de frutos do mar e não se arrependa. Reserva essencial aos fins de semana." data-en="The best oysters in the region! Cozy atmosphere with sea view. Order the seafood combo and don't regret it. Reservation essential on weekends.">As melhores ostras da região! Ambiente aconchegante com vista para o mar. Peça o combo de frutos do mar e não se arrependa. Reserva essencial aos fins de semana.</p>
+                    </div>
+                </article>
+
+                <article class="tip-card" data-category="food">
+                    <div class="tip-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Café">
+                        <span class="tip-category-badge badge-food" data-pt="GASTRONOMIA" data-en="GASTRONOMY">GASTRONOMIA</span>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-pt="Lagoa da Conceição, SC" data-en="Lagoa da Conceição, SC">Lagoa da Conceição, SC</span>
+                        </div>
+                        <h3 data-pt="Café da Manhã na Vila" data-en="Village Breakfast">Café da Manhã na Vila</h3>
+                        <p data-pt="Nosso café favorito para começar o dia! Pães artesanais frescos, café especial e uma varanda com vista para a lagoa. O melhor croissant que você vai comer na vida." data-en="Our favorite cafe to start the day! Fresh artisan breads, specialty coffee and a balcony overlooking the lagoon. The best croissant you'll ever eat.">Nosso café favorito para começar o dia! Pães artesanais frescos, café especial e uma varanda com vista para a lagoa. O melhor croissant que você vai comer na vida.</p>
+                    </div>
+                </article>
+
+                <!-- Turismo -->
+                <article class="tip-card" data-category="tourism">
+                    <div class="tip-image">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Praia">
+                        <span class="tip-category-badge badge-tourism" data-pt="TURISMO" data-en="TOURISM">TURISMO</span>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-pt="Bombinhas, SC" data-en="Bombinhas, SC">Bombinhas, SC</span>
+                        </div>
+                        <h3 data-pt="Praia Secreta de Canto Grande" data-en="Secret Canto Grande Beach">Praia Secreta de Canto Grande</h3>
+                        <p data-pt="Águas cristalinas perfeitas para mergulho livre. Leve máscara e snorkel para ver tartarugas marinhas. Menos turistas, mais natureza. Nosso cantinho especial para dias tranquilos." data-en="Crystal clear waters perfect for snorkeling. Bring mask and snorkel to see sea turtles. Fewer tourists, more nature. Our special corner for peaceful days.">Águas cristalinas perfeitas para mergulho livre. Leve máscara e snorkel para ver tartarugas marinhas. Menos turistas, mais natureza. Nosso cantinho especial para dias tranquilos.</p>
+                    </div>
+                </article>
+
+                <article class="tip-card" data-category="tourism">
+                    <div class="tip-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Montanha">
+                        <span class="tip-category-badge badge-tourism" data-pt="TURISMO" data-en="TOURISM">TURISMO</span>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-pt="Serra Catarinense" data-en="Serra Catarinense">Serra Catarinense</span>
+                        </div>
+                        <h3 data-pt="Mirante da Serra do Rio do Rastro" data-en="Serra do Rio do Rastro Viewpoint">Mirante da Serra do Rio do Rastro</h3>
+                        <p data-pt="Uma das estradas mais bonitas do Brasil. Pare nos mirantes para fotos incríveis. No inverno, tem chance de ver neve! Leve agasalhos mesmo no verão." data-en="One of the most beautiful roads in Brazil. Stop at viewpoints for incredible photos. In winter, there's a chance to see snow! Bring warm clothes even in summer.">Uma das estradas mais bonitas do Brasil. Pare nos mirantes para fotos incríveis. No inverno, tem chance de ver neve! Leve agasalhos mesmo no verão.</p>
+                    </div>
+                </article>
+
+                <article class="tip-card" data-category="food">
+                    <div class="tip-image">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80" alt="Comida">
+                        <span class="tip-category-badge badge-food" data-pt="GASTRONOMIA" data-en="GASTRONOMY">GASTRONOMIA</span>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-pt="Praia do Rosa, SC" data-en="Praia do Rosa, SC">Praia do Rosa, SC</span>
+                        </div>
+                        <h3 data-pt="Bistrô Pedra da Vigia" data-en="Pedra da Vigia Bistro">Bistrô Pedra da Vigia</h3>
+                        <p data-pt="Jantar romântico com pôr do sol inesquecível. Menu degustação com ingredientes locais. A sobremesa de chocolate com flor de sal é divina. Reserva com antecedência!" data-en="Romantic dinner with unforgettable sunset. Tasting menu with local ingredients. The chocolate dessert with sea salt is divine. Book in advance!">Jantar romântico com pôr do sol inesquecível. Menu degustação com ingredientes locais. A sobremesa de chocolate com flor de sal é divina. Reserva com antecedência!</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="wellness-section">
+        <div class="wellness-container">
+            <center>
+                <span class="wellness-badge" data-pt="PARCEIRA RECOMENDADA" data-en="RECOMMENDED PARTNER">PARCEIRA RECOMENDADA</span>
+            </center>
+            <div class="wellness-content">
+                <div class="wellness-image">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80" alt="Yoga e bem-estar">
+                </div>
+                <div class="wellness-text">
+                    <h2 data-pt="Renove Corpo e Mente" data-en="Renew Body and Mind">Renove Corpo e Mente</h2>
+                    <p data-pt="Durante sua estadia, recomendamos os serviços da nossa querida irmã, especialista em terapias holísticas e bem-estar. Uma experiência transformadora que complementa perfeitamente seus dias de descanso em nossos refúgios." data-en="During your stay, we recommend the services of our dear sister, a specialist in holistic therapies and wellness. A transformative experience that perfectly complements your days of rest in our retreats.">Durante sua estadia, recomendamos os serviços da nossa querida irmã, especialista em terapias holísticas e bem-estar. Uma experiência transformadora que complementa perfeitamente seus dias de descanso em nossos refúgios.</p>
+                    <p data-pt="Com anos de experiência e formação internacional, ela oferece tratamentos personalizados que harmonizam corpo, mente e espírito." data-en="With years of experience and international training, she offers personalized treatments that harmonize body, mind and spirit.">Com anos de experiência e formação internacional, ela oferece tratamentos personalizados que harmonizam corpo, mente e espírito.</p>
+                    
+                    <div class="wellness-features">
+                        <div class="wellness-feature">
+                            <i class="fas fa-spa"></i>
+                            <div class="wellness-feature-text">
+                                <h4 data-pt="Yoga & Meditação" data-en="Yoga & Meditation">Yoga & Meditação</h4>
+                                <p data-pt="Aulas particulares e em grupo" data-en="Private and group classes">Aulas particulares e em grupo</p>
+                            </div>
+                        </div>
+                        <div class="wellness-feature">
+                            <i class="fas fa-hands"></i>
+                            <div class="wellness-feature-text">
+                                <h4 data-pt="Massoterapia" data-en="Massage Therapy">Massoterapia</h4>
+                                <p data-pt="Técnicas relaxantes e terapêuticas" data-en="Relaxing and therapeutic techniques">Técnicas relaxantes e terapêuticas</p>
+                            </div>
+                        </div>
+                        <div class="wellness-feature">
+                            <i class="fas fa-leaf"></i>
+                            <div class="wellness-feature-text">
+                                <h4 data-pt="Terapia Holística" data-en="Holistic Therapy">Terapia Holística</h4>
+                                <p data-pt="Reiki, aromaterapia e mais" data-en="Reiki, aromatherapy and more">Reiki, aromaterapia e mais</p>
+                            </div>
+                        </div>
+                        <div class="wellness-feature">
+                            <i class="fas fa-heart"></i>
+                            <div class="wellness-feature-text">
+                                <h4 data-pt="Retiros Personalizados" data-en="Custom Retreats">Retiros Personalizados</h4>
+                                <p data-pt="Programas completos de bem-estar" data-en="Complete wellness programs">Programas completos de bem-estar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.instagram.com/seunome_wellness/" target="_blank" class="wellness-cta">
+                        <i class="fab fa-instagram"></i>
+                        <span data-pt="Conheça os Serviços" data-en="Discover the Services">Conheça os Serviços</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -225,6 +458,29 @@
             menu.classList.toggle('active');
         }
 
+        // Category Filter
+        function filterTips(category) {
+            const cards = document.querySelectorAll('.tip-card');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    // Force reflow for animation
+                    card.offsetHeight;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             initLanguage();
 
@@ -240,6 +496,15 @@
             document.querySelectorAll('.mobile-nav a').forEach(link => {
                 link.addEventListener('click', () => {
                     document.getElementById('mobileMenu').classList.remove('active');
+                });
+            });
+
+            // Category tabs - simplified for better mobile support
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const category = this.getAttribute('data-category');
+                    filterTips(category);
                 });
             });
         });
